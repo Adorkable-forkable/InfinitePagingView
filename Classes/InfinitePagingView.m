@@ -39,6 +39,7 @@
     CGSize _pageSize;
 }
 
+@synthesize applyPageSizeToPageViews = _applyPageSizeToPageViews;
 @synthesize scrollDirection = _scrollDirection;
 @synthesize currentPageIndex = _currentPageIndex;
 @synthesize delegate;
@@ -106,6 +107,10 @@
         _pageViews = [NSMutableArray array];
     }
     [_pageViews addObject:pageView];
+    if (self.applyPageSizeToPageViews == YES)
+    {
+        pageView.frame = CGRectMake(pageView.frame.origin.x, pageView.frame.origin.y, self.pageSize.width, self.pageSize.height);
+    }
     [self layoutPages];
 }
 
@@ -141,6 +146,10 @@
     }
     NSUInteger idx = 0;
     for (UIView *pageView in _pageViews) {
+        if (self.applyPageSizeToPageViews == YES)
+        {
+            pageView.frame = CGRectMake(pageView.frame.origin.x, pageView.frame.origin.y, self.pageSize.width, self.pageSize.height);
+        }
         if (_scrollDirection == InfinitePagingViewHorizonScrollDirection) {
             pageView.center = CGPointMake(idx * (_innerScrollView.frame.size.width) + (_innerScrollView.frame.size.width / 2), _innerScrollView.center.y);
         } else {

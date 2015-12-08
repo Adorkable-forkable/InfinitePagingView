@@ -67,6 +67,11 @@ typedef enum {
 @property (nonatomic, assign) CGSize pageSize;
 
 /*!
+ @var BOOL whether to apply the pageSize to the individual Page Views
+ */
+@property (nonatomic, assign) BOOL applyPageSizeToPageViews;
+
+/*!
  @var InfinitePagingViewScrollDirection
  */
 @property (nonatomic, assign) InfinitePagingViewScrollDirection scrollDirection;
