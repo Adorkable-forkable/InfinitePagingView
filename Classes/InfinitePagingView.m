@@ -36,12 +36,23 @@
     UIScrollView *_innerScrollView;
     NSMutableArray *_pageViews;
     NSInteger _lastPageIndex;
+    CGSize _pageSize;
 }
 
-@synthesize pageSize = _pageSize;
 @synthesize scrollDirection = _scrollDirection;
 @synthesize currentPageIndex = _currentPageIndex;
 @synthesize delegate;
+
+- (void)setPageSize:(CGSize)pageSize
+{
+    _pageSize = pageSize;
+    [self layoutPages];
+}
+
+- (CGSize)pageSize
+{
+    return _pageSize;
+}
 
 - (void)setFrame:(CGRect)frame
 {
